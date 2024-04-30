@@ -15,8 +15,8 @@ add_library(${PROJECT_NAME}
     src/GfxMath.c
     src/Encoder.cpp
     src/Gauge.cpp
-    specifics/src/ST7789.cpp
-    specifics/src/GC9A01.cpp
+    drivers/st7789/st7789.cpp
+    drivers/gc9a01/gc9a01.cpp
 )
 
 add_library(sub::Display ALIAS ${PROJECT_NAME})
