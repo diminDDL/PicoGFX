@@ -3,7 +3,7 @@
 /**
  * @brief Display initialization
 */
-Display::Display(Driver* spi, display_config_t* config, unsigned short* frameBuffer, unsigned char CASET, unsigned char RASET, unsigned char RAMWR)
+Display::Display(hardware_driver* spi, display_config_t* config, unsigned short* frameBuffer, unsigned char CASET, unsigned char RASET, unsigned char RAMWR)
 {
     this->spi = spi;
     this->config = config;

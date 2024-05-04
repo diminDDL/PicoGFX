@@ -5,10 +5,10 @@
 #include "Shapes.h"
 #include "GfxMath.h"
 
-class Gradients
+class Gradient
 {
 public:
-    Gradients(unsigned short* frameBuffer, display_config_t* config);
+    Gradient(unsigned short* frameBuffer, display_config_t* config);
 
     void fillGradient(Color startColor, Color endColor, Point start, Point end);
     void drawRotCircleGradient(Point center, int radius, int rotationSpeed, Color start, Color end);

@@ -14,7 +14,7 @@
 class GC9A01 : public Display
 {
 public:
-    GC9A01(Driver* spi, display_config_t* config) : 
+    GC9A01(hardware_driver* spi, display_config_t* config) : 
         Display(spi, config, this->framebuffer, COMMAND_CASET, COMMAND_RASET, COMMAND_RAMWR) {} // Constructor
     void init();
     void reset();

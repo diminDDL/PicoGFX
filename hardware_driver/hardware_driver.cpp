@@ -1,13 +1,13 @@
-#include "Driver.hpp"
+#include "hardware_driver.hpp"
 
 /**
- * @brief Constructor for Driver
+ * @brief Constructor for hardware_driver
  * @param pins The struct containing the pins to use
  * @param hw_params The struct containing the hardware parameters to use
  * @param spi The SPI bus to use, can be ignored if using DMA or PIO
  * @note If SPI is in use, and the instance is not specified, spi0 will be used
 */
-Driver::Driver(display_config_t* config)
+hardware_driver::hardware_driver(display_config_t* config)
 {
     this->config = config;
     this->interface = config->interface;
@@ -16,7 +16,7 @@ Driver::Driver(display_config_t* config)
 /**
  * @brief Initialize the hardware interface
 */
-void Driver::init()
+void hardware_driver::init()
 {
     switch(this->interface)
     {
@@ -41,7 +41,7 @@ void Driver::init()
  * @param length The length of the data
  * @return bytes written on success, -1 on failure
 */
-void Driver::writeData(uint8_t command, const uint8_t* data, size_t length)
+void hardware_driver::writeData(uint8_t command, const uint8_t* data, size_t length)
 {
     // These displays don't operate with internal drivers with buffers
     if(this->interface != display_interface_t::DISPLAY_SPI)
@@ -87,7 +87,7 @@ void Driver::writeData(uint8_t command, const uint8_t* data, size_t length)
  * @param command The command to send
  * @return bytes written on success, -1 on failure
 */
-void Driver::setDataMode(uint8_t command)
+void hardware_driver::setDataMode(uint8_t command)
 {
     // These displays don't operate with internal drivers with buffers
     if(this->interface != display_interface_t::DISPLAY_SPI)
@@ -114,7 +114,7 @@ void Driver::setDataMode(uint8_t command)
  * @param length The length of the data
  * @return bytes written on success, -1 on failure
 */
-void Driver::writePixels(const uint16_t* data, size_t length)
+void hardware_driver::writePixels(const uint16_t* data, size_t length)
 {
     switch(this->interface)
     {
@@ -137,7 +137,7 @@ void Driver::writePixels(const uint16_t* data, size_t length)
  * @private
  * @brief Initialize the SPI bus
 */
-void Driver::initSPI(void)
+void hardware_driver::initSPI(void)
 {
     // enable the SPI bus
     spi_init(this->config->spi.spi_instance, this->config->spi.baudrate);
@@ -156,7 +156,7 @@ void Driver::initSPI(void)
  * @private
  * @brief Initialize the SPI bus with PIO
 */
-void Driver::initSPIwPIO(void)
+void hardware_driver::initSPIwPIO(void)
 {
     // create the first spi state machine
     this->pio = pio0;
@@ -175,17 +175,17 @@ void Driver::initSPIwPIO(void)
     gpio_put(this->config->spi.dc, 1);
 }
 
-void Driver::initPiss()
+void hardware_driver::initPiss()
 {
 
 }
 
-void Driver::initRGB()
+void hardware_driver::initRGB()
 {
 
 }
 
-void Driver::changeSPIbits(spi_bit_length_t bits)
+void hardware_driver::changeSPIbits(spi_bit_length_t bits)
 {
     // Stop the state machine
     pio_sm_set_enabled(this->pio, this->sm, false);
@@ -205,7 +205,7 @@ void Driver::changeSPIbits(spi_bit_length_t bits)
  * @param dc The data/command pin
  * @param cs The chip select pin
 */
-inline void Driver::setSPIdataCommandPins(bool dc, bool cs)
+inline void hardware_driver::setSPIdataCommandPins(bool dc, bool cs)
 {
     sleep_us(1);
     gpio_put_masked((1u << this->config->spi.dc) | (1u << this->config->spi.cs), 

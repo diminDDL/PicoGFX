@@ -19,12 +19,12 @@ Graphics& PicoGFX::getGraphics()
 }
 
 /**
- * @brief Get the Gradients object
- * @return Gradients&
+ * @brief Get the Gradient object
+ * @return Gradient&
 */
-Gradients& PicoGFX::getGradients()
+Gradient& PicoGFX::getGradient()
 {
-    return *gradients;
+    return *gradient;
 }
 
 /**
@@ -56,13 +56,13 @@ Graphics* PicoGFX::getGraphicsPtr()
 }
 
 /**
- * @brief Get the Gradients pointer
- * @return Gradients*
+ * @brief Get the Gradient pointer
+ * @return Gradient*
 */
 
-Gradients* PicoGFX::getGradientsPtr()
+Gradient* PicoGFX::getGradientPtr()
 {
-    return gradients;
+    return gradient;
 }
 
 /**

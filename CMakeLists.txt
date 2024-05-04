@@ -6,28 +6,38 @@ project(PicoGFX)
 
 # Add the library with the above sources
 add_library(${PROJECT_NAME} 
-    src/Driver.cpp
-    src/Display.cpp
-    src/Print.cpp
-    src/Graphics.cpp
-    src/Gradients.cpp
-    src/PicoGFX.cpp
-    src/GfxMath.c
-    src/Encoder.cpp
-    src/Gauge.cpp
-    drivers/st7789/st7789.cpp
-    drivers/gc9a01/gc9a01.cpp
+    compression/encoder.cpp
+    compression/decoder.cpp
+    display/display.cpp
+    display/display_drivers/st7789/st7789.cpp
+    display/display_drivers/gc9a01/gc9a01.cpp
+    gauge/gauge.cpp
+    gradient/gradient.cpp
+    graphics/graphics.cpp
+    graphics/gfxmath.c
+    hardware_driver/hardware_driver.cpp
+    picogfx/picogfx.cpp
+    print/print.cpp
 )
 
 add_library(sub::Display ALIAS ${PROJECT_NAME})
 
 target_include_directories(${PROJECT_NAME}
-    PUBLIC ${PROJECT_SOURCE_DIR}/include
-    PUBLIC ${PROJECT_SOURCE_DIR}/fonts
-    PUBLIC ${PROJECT_SOURCE_DIR}/drivers
+    PUBLIC ${PROJECT_SOURCE_DIR}/color
+    PUBLIC ${PROJECT_SOURCE_DIR}/compression
+    PUBLIC ${PROJECT_SOURCE_DIR}/display
+    PUBLIC ${PROJECT_SOURCE_DIR}/display/display_drivers/st7789
+    PUBLIC ${PROJECT_SOURCE_DIR}/display/display_drivers/gc9a01
+    PUBLIC ${PROJECT_SOURCE_DIR}/gauge
+    PUBLIC ${PROJECT_SOURCE_DIR}/gradient
+    PUBLIC ${PROJECT_SOURCE_DIR}/graphics
+    PUBLIC ${PROJECT_SOURCE_DIR}/hardware_driver
+    PUBLIC ${PROJECT_SOURCE_DIR}/picogfx
+    PUBLIC ${PROJECT_SOURCE_DIR}/print
+    PUBLIC ${PROJECT_SOURCE_DIR}/print/fonts
 )
 
-pico_generate_pio_header(${PROJECT_NAME} ${CMAKE_CURRENT_LIST_DIR}/include/pio_spi.pio)
+pico_generate_pio_header(${PROJECT_NAME} ${CMAKE_CURRENT_LIST_DIR}/hardware_driver/pio_spi.pio)
 
 target_link_libraries(${PROJECT_NAME} 
     pico_stdlib

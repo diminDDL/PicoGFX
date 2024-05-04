@@ -1,33 +1,33 @@
 #pragma once
 
-#include "Graphics.hpp"
-#include "Print.hpp"
-#include "Gradients.hpp"
-#include "Encoder.h"
-#include "Gauge.hpp"
+#include "graphics.hpp"
+#include "print.hpp"
+#include "gradient.hpp"
+#include "encoder.h"
+#include "gauge.hpp"
 
 class PicoGFX {
 public:
-    PicoGFX(Print* print, Graphics* graphics, Gradients* gradients, Encoder* encoder) :
+    PicoGFX(Print* print, Graphics* graphics, Gradient* gradient, Encoder* encoder) :
         print(print),
         graphics(graphics),
-        gradients(gradients) {
+        gradient(gradient) {
         fillLookupTables();
     }
 
     Print& getPrint();
     Graphics& getGraphics();
-    Gradients& getGradients();
+    Gradient& getGradient();
     Encoder& getEncoder();
 
     Print* getPrintPtr();
     Graphics* getGraphicsPtr();
-    Gradients* getGradientsPtr();
+    Gradient* getGradientPtr();
     Encoder* getEncoderPtr();
 
 private:
     Print* print;
     Graphics* graphics;
-    Gradients* gradients;
+    Gradient* gradient;
     Encoder* encoder;
 };

@@ -8,16 +8,16 @@
 #include "pico/divider.h"
 #include "hardware/pwm.h"
 
-#include "Driver.hpp"
-#include "Structs.h"
-#include "Shapes.h"
-#include "Color.h"
+#include "hardware_driver.hpp"
+#include "structs.h"
+#include "shapes.h"
+#include "color.h"
 
 
 class Display
 {
 public:
-    Display(Driver* spi, display_config_t* config, unsigned short* frameBuffer, unsigned char CASET, unsigned char RASET, unsigned char RAMWR);
+    Display(hardware_driver* spi, display_config_t* config, unsigned short* frameBuffer, unsigned char CASET, unsigned char RASET, unsigned char RAMWR);
     void setBrightness(unsigned char brightness);
     int getRotation(void) { return this->config->rotation; }
     void clear(void);
@@ -40,7 +40,7 @@ public:
     unsigned short* getFrameBuffer(void) { return this->frameBuffer; }
 
 protected:
-    Driver* spi;
+    hardware_driver* spi;
     display_config_t* config;
     bool dimmingEnabled = false;
     unsigned int sliceNum;

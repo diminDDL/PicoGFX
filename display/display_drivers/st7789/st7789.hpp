@@ -14,7 +14,7 @@
 class ST7789 : public Display
 {
 public:
-    ST7789(Driver* spi, display_config_t* config) : 
+    ST7789(hardware_driver* spi, display_config_t* config) : 
         Display(spi, config, this->framebuffer, COMMAND_CASET, COMMAND_RASET, COMMAND_RAMWR) {} // Constructor
     void init();
 

@@ -1,4 +1,4 @@
-#include "Gradients.hpp"
+#include "Gradient.hpp"
 #include <stdio.h>
 
 // create a global instance of the lookup tables
@@ -9,7 +9,7 @@ unsigned short colorLUT[MAX_COLOR_DIFF + 1];
  * @param frameBuffer Pointer to the frame buffer
  * @param params Display parameters
 */
-Gradients::Gradients(unsigned short* frameBuffer, display_config_t* config)
+Gradient::Gradient(unsigned short* frameBuffer, display_config_t* config)
 {
     this->frameBuffer = frameBuffer;
     this->config = config;
@@ -25,7 +25,7 @@ Gradients::Gradients(unsigned short* frameBuffer, display_config_t* config)
  * @param end End Point
  * @note The start and end points are only used to find the direction of the gradient, it will still fill the entire display!
 */
-void Gradients::fillGradient(Color startColor, Color endColor, Point start, Point end)
+void Gradient::fillGradient(Color startColor, Color endColor, Point start, Point end)
 {
     // check if the start and end Points are the same
     if(start == end)
@@ -96,7 +96,7 @@ void Gradients::fillGradient(Color startColor, Color endColor, Point start, Poin
  * @param start The color to start the gradient with
  * @param end The color to end the gradient with
 */
-void Gradients::drawRotCircleGradient(Point center, int radius, int rotationSpeed, Color start, Color end)
+void Gradient::drawRotCircleGradient(Point center, int radius, int rotationSpeed, Color start, Color end)
 {
     this->theta += rotationSpeed;
     this->theta = this->theta % NUMBER_OF_ANGLES;
@@ -125,7 +125,7 @@ void Gradients::drawRotCircleGradient(Point center, int radius, int rotationSpee
  * @param start The color to start the gradient with
  * @param end The color to end the gradient with
 */
-void Gradients::drawRotRectGradient(Point center, int width, int height, int rotationSpeed, Color start, Color end)
+void Gradient::drawRotRectGradient(Point center, int width, int height, int rotationSpeed, Color start, Color end)
 {
     this->theta += rotationSpeed;
     this->theta = this->theta % NUMBER_OF_ANGLES;

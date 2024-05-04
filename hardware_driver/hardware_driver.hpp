@@ -8,7 +8,7 @@
 #include "hardware/pio.h"
 #include "hardware/clocks.h"
 #include "pio_spi.pio.h"
-#include "Structs.h"
+#include "structs.h"
 
 typedef enum
 {
@@ -23,10 +23,10 @@ typedef struct pio_spi_inst
     uint cs_pin;
 } pio_spi_inst_t;
 
-class Driver
+class hardware_driver
 {
 public:
-    Driver(display_config_t* config);
+    hardware_driver(display_config_t* config);
     void init(void);
 
     void writeData(uint8_t command, const uint8_t* data, size_t length);
