@@ -27,15 +27,6 @@ Gradient& PicoGFX::getGradient()
     return *gradient;
 }
 
-/**
- * @brief Get the Encoder object
- * @return Encoder&
-*/
-Encoder& PicoGFX::getEncoder()
-{
-    return *encoder;
-}
-
 
 /**
  * @brief Get the Print pointer
@@ -63,13 +54,4 @@ Graphics* PicoGFX::getGraphicsPtr()
 Gradient* PicoGFX::getGradientPtr()
 {
     return gradient;
-}
-
-/**
- * @brief Get the Encoder pointer
- * @return Encoder*
-*/
-Encoder* PicoGFX::getEncoderPtr()
-{
-    return encoder;
 }

@@ -6,8 +6,9 @@ project(PicoGFX)
 
 # Add the library with the above sources
 add_library(${PROJECT_NAME} 
-    compression/encoder.cpp
-    compression/decoder.cpp
+    compression/compression.cpp
+    compression/compression_decoder.cpp
+    compression/compression_encoder.cpp
     display/display.cpp
     display/display_drivers/st7789/st7789.cpp
     display/display_drivers/gc9a01/gc9a01.cpp
