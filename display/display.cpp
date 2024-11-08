@@ -1,4 +1,5 @@
-#include <Display.hpp>
+#include "display.hpp"
+#include <sys/types.h>
 
 /**
  * @brief Display initialization

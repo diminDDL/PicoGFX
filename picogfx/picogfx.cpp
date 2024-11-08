@@ -1,4 +1,4 @@
-#include "PicoGFX.hpp"
+#include "picogfx.hpp"
 
 /**
  * @brief Get the Print object

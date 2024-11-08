@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Display.hpp"
+#include "display.hpp"
 
 // Driver constants
 #define COMMAND_RAMWR 0x2c

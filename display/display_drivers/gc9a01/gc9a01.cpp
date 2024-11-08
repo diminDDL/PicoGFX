@@ -1,4 +1,4 @@
-#include "GC9A01.hpp"
+#include "gc9a01.hpp"
 
 /**
  * @brief Initialize the display

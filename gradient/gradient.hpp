@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Color.h"
-#include "Structs.h"
-#include "Shapes.h"
-#include "GfxMath.h"
+#include "color.h"
+#include "structs.h"
+#include "shapes.h"
+#include "gfxmath.h"
 
 class Gradient
 {

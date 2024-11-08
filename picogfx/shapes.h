@@ -5,7 +5,7 @@ extern "C"
 {
 #endif
 
-#include "GfxMath.h"
+#include "gfxmath.h"
 
 struct Point
 {
