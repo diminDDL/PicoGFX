@@ -158,7 +158,7 @@ def Generate_File(font_file, size):
         header = f"""#pragma once
 
 // Include the font struct for storing the font data
-#include "FontStruct.h"
+#include "fontstruct.h"
 
 // Estimated memory usage: {str(size_of_font).replace(",", " ")} bytes
 
@@ -231,7 +231,7 @@ def Generate_Header():
     global total_memory_usage
 
     # Output bitmap as C header file
-    with open(os.path.abspath(output_dir) + '/' + "FontStruct.h", "w") as f:
+    with open(os.path.abspath(output_dir) + '/' + "fontstruct.h", "w") as f:
         header = f"""#pragma once
 
 // Estimated total memory usage: {total_memory_usage} bytes
