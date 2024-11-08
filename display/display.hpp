@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <sys/types.h>
 
 #include "pico/stdlib.h"
 #include "pico/divider.h"

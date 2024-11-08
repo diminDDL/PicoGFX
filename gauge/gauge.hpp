@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Graphics.hpp"
+#include "graphics.hpp"
 
 // Constants
 #define DIAL_ANGLE 230  // Should be between 0 and 360 degrees

@@ -1,4 +1,4 @@
-#include "Graphics.hpp"
+#include "graphics.hpp"
 #include <stdio.h>
 
 /**

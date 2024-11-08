@@ -1,4 +1,4 @@
-#include "Gradient.hpp"
+#include "gradient.hpp"
 #include <stdio.h>
 
 // create a global instance of the lookup tables

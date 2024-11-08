@@ -1,4 +1,4 @@
-#include "GfxMath.h"
+#include "gfxmath.h"
 
 int cosTable[NUMBER_OF_ANGLES];
 int sinTable[NUMBER_OF_ANGLES];

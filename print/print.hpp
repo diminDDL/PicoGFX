@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Color.h"
-#include "Structs.h"
-#include "Shapes.h"
-#include "FontStruct.h"
+#include "color.h"
+#include "structs.h"
+#include "shapes.h"
+#include "fontstruct.h"
 
 #include <stdlib.h>
 #include <stdio.h>
