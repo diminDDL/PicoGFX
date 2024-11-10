@@ -1,7 +1,7 @@
 #pragma once
 
 // Include the font struct for storing the font data
-#include "FontStruct.h"
+#include "fontstruct.h"
 
 // Estimated memory usage: 6335 bytes
 
