@@ -19,6 +19,8 @@ add_library(${PROJECT_NAME}
     hardware_driver/hardware_driver.cpp
     picogfx/picogfx.cpp
     print/print.cpp
+    ext/touch/touch.cpp
+    ext/touch/variants/cst816/cst816.cpp
 )
 
 add_library(sub::Display ALIAS ${PROJECT_NAME})
@@ -36,6 +38,8 @@ target_include_directories(${PROJECT_NAME}
     PUBLIC ${PROJECT_SOURCE_DIR}/picogfx
     PUBLIC ${PROJECT_SOURCE_DIR}/print
     PUBLIC ${PROJECT_SOURCE_DIR}/print/fonts
+    PUBLIC ${PROJECT_SOURCE_DIR}/ext/touch
+    PUBLIC ${PROJECT_SOURCE_DIR}/ext/touch/variants/cst816
 )
 
 pico_generate_pio_header(${PROJECT_NAME} ${CMAKE_CURRENT_LIST_DIR}/hardware_driver/pio_spi.pio)
@@ -43,6 +47,7 @@ pico_generate_pio_header(${PROJECT_NAME} ${CMAKE_CURRENT_LIST_DIR}/hardware_driv
 target_link_libraries(${PROJECT_NAME} 
     pico_stdlib
     hardware_spi
+    hardware_i2c
     hardware_dma
     hardware_pwm
     hardware_pio
