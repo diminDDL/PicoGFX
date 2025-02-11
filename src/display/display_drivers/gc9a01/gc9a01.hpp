@@ -20,7 +20,7 @@ public:
     void reset();
     void softReset();
 
-    void setRotation(int rotation);
+    void setRotation(display_rotation_t rotation);
     void setDisplayState(bool on);
 
 private:

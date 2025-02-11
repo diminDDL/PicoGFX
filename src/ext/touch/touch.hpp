@@ -4,15 +4,15 @@
 #include <stdlib.h>
 #include <hardware/i2c.h>
 #include "pico/stdlib.h"
+#include "structs.h"
 
 class touch
 {
 public:
-    touch(i2c_inst_t i2c_inst, uint32_t sda_pin, uint32_t scl_pin, uint32_t speed = 400'000);
-    void i2cScan();
+    touch(display_touch_config_t* config);
 
 protected:
-    i2c_inst_t i2c_inst;
+    i2c_inst_t* i2c_inst;
     uint32_t sda_pin;
     uint32_t scl_pin;
     uint32_t speed;

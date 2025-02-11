@@ -18,7 +18,7 @@ public:
         Display(spi, config, this->framebuffer, COMMAND_CASET, COMMAND_RASET, COMMAND_RAMWR) {} // Constructor
     void init();
 
-    void setRotation(int rotation);
+    void setRotation(display_rotation_t rotation);
     void setDisplayState(bool on);
 
 private:

@@ -99,11 +99,10 @@ void GC9A01::reset()
  * @brief Set the rotation of the display
  * @param rotation Rotation to set
 */
-void GC9A01::setRotation(int rotation)
+void GC9A01::setRotation(display_rotation_t rotation)
 {
-	rotation %= 4; // Normalize rotation to 0-3
 	// save the rotation
-    this->config->rotation = (int)rotation;
+    this->config->rotation = rotation;
     unsigned int width = this->config->width;
 	unsigned int height = this->config->height;
     unsigned int maxWidth = this->maxWidth;
@@ -111,28 +110,28 @@ void GC9A01::setRotation(int rotation)
 
 	switch(rotation)
     {
-		case 0:
+		case display_rotation_t::ROTATION_0:
             this->writeData(0x36, 0x48);
 			this->config->height = height;
 			this->config->width = width;
             this->maxWidth = MAX_WIDTH;
             this->maxHeight = MAX_HEIGHT;
             break;
-        case 1:
+        case display_rotation_t::ROTATION_90:
 			this->writeData(0x36, 0x60);
 			this->config->height = width;
 			this->config->width = height;
             this->maxWidth = MAX_HEIGHT;
             this->maxHeight = MAX_WIDTH;
             break;
-        case 2:
+        case display_rotation_t::ROTATION_180:
 			this->writeData(0x36, 0x88);
 			this->config->height = height;
 			this->config->width = width;
             this->maxWidth = MAX_WIDTH;
             this->maxHeight = MAX_HEIGHT;
             break;
-        case 3:
+        case display_rotation_t::ROTATION_270:
 			this->writeData(0x36, 0xa8);
 			this->config->height = width;
 			this->config->width = height;

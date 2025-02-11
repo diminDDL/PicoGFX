@@ -8,6 +8,7 @@ extern "C"
 // Only include on a pico
 #ifdef PICO_BUILD
 #include "hardware/spi.h"
+#include "hardware/i2c.h"
 #endif
 
 typedef struct
@@ -38,6 +39,16 @@ typedef struct
 
 typedef struct
 {
+    i2c_inst_t* i2c_inst;
+    uint32_t speed = 400'000;
+    uint32_t sda_pin;
+    uint32_t scl_pin;
+    uint32_t irq_pin;
+    uint32_t rst_pin;
+} display_touch_config_t;
+
+typedef struct
+{
     int db0;
     int db1;
     int db2;
@@ -63,6 +74,14 @@ typedef struct
 
 typedef enum
 {
+    ROTATION_0,
+    ROTATION_90,
+    ROTATION_180,
+    ROTATION_270
+} display_rotation_t;
+
+typedef enum
+{
     DISPLAY_SPI,
     DISPLAY_PISS,
     DISPLAY_RGB
@@ -79,7 +98,7 @@ typedef struct
     unsigned int columnOffset2;
     unsigned int rowOffset1;
     unsigned int rowOffset2;   
-    unsigned int rotation;
+    display_rotation_t rotation;
 
 #ifdef PICO_BUILD
     display_interface_t interface;

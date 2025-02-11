@@ -11,7 +11,7 @@
 
 #include "hardware_driver.hpp"
 #include "structs.h"
-#include "shapes.h"
+#include "shapes.hpp"
 #include "color.h"
 
 
@@ -20,7 +20,7 @@ class Display
 public:
     Display(hardware_driver* spi, display_config_t* config, unsigned short* frameBuffer, unsigned char CASET, unsigned char RASET, unsigned char RAMWR);
     void setBrightness(unsigned char brightness);
-    int getRotation(void) { return this->config->rotation; }
+    display_rotation_t getRotation(void) { return this->config->rotation; }
     void clear(void);
 
     void update(bool framecounter = false);

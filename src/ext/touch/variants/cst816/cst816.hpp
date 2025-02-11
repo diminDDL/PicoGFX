@@ -1,6 +1,8 @@
 #pragma once
 
 #include "touch.hpp"
+#include "structs.h"
+#include "display.hpp"
 
 #define CST816_ADDR 0x15
 
@@ -27,7 +29,7 @@ typedef struct
 class cst816 : public touch
 {
 public:
-    cst816(i2c_inst_t i2c_inst, uint32_t sda_pin, uint32_t scl_pin, uint32_t irq_pin, uint32_t rst_pin);
+    cst816(display_touch_config_t* config, Display* display);
     void init();
     void reset();
     void disableStandby();
@@ -42,6 +44,7 @@ private:
     uint32_t rst_pin;
     uint32_t irq_pin;
     cst816_report_t report;
+    Display* display;
     bool available = false;
 
     static cst816* instance;
