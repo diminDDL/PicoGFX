@@ -2,7 +2,7 @@
 
 #include "color.h"
 #include "structs.h"
-#include "shapes.h"
+#include "shapes.hpp"
 #include "fontstruct.h"
 
 #include <stdlib.h>

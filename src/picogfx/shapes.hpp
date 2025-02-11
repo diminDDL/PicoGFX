@@ -1,69 +1,29 @@
 #pragma once
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 #include "gfxmath.h"
+
+template <typename T>
+concept numeric = requires(T t) 
+{ 
+    std::is_arithmetic_v<T>; (int)t; 
+};
 
 struct Point
 {
     int x;
     int y;
-
+   
     /**
      * @brief Construct a new empty Point object
-    */
-    Point()
-    {
-        this->x = 0;
-        this->y = 0;
-    }
+     */
+    Point(): x{0}, y{0} {}
 
     /**
      * @brief Construct a new Point object
      * @param x X coordinate of the point
      * @param y Y coordinate of the point
-    */
-    Point(unsigned int x, unsigned int y)
-    {
-        this->x = (int)x;
-        this->y = (int)y;
-    }
-
-    /**
-     * @brief Construct a new Point object
-     * @param x X coordinate of the point
-     * @param y Y coordinate of the point
-    */
-    Point(int x, int y)
-    {
-        this->x = x;
-        this->y = y;
-    }
-
-    /**
-     * @brief Construct a new Point object
-     * @param x X coordinate of the point
-     * @param y Y coordinate of the point
-    */
-    Point(unsigned int x, int y)
-    {
-        this->x = x;
-        this->y = y;
-    }
-
-    /**
-     * @brief Construct a new Point object
-     * @param x X coordinate of the point
-     * @param y Y coordinate of the point
-    */
-    Point(int x, unsigned int y)
-    {
-        this->x = x;
-        this->y = y;
-    }
+     */
+    Point(numeric auto x, numeric auto y): x{(int)x}, y{(int)y} {}
 
     /**
      * @brief Calculate the distance between two points
@@ -293,7 +253,3 @@ inline void swap(Point& a, Point& b)
 	a = b;
 	b = temp;
 }
-
-#ifdef __cplusplus
-}
-#endif
